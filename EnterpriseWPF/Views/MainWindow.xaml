@@ -1,0 +1,50 @@
+﻿<mah:MetroWindow x:Class="EnterpriseWPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:EnterpriseWPF"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+       Title="Enterprise WPF" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding AddEmployeeCommand}" Content="Dodaj" Margin="5" Width="90"/>
+            <Button Command="{Binding EditEmployeeCommand}" Content="Edytuj" Margin="5" Width="90"/>
+            <Button Command="{Binding DownEmployeeCommand}" Content="Zwolnij" Margin="5" Width="90"/>
+            <ComboBox 
+                ItemsSource="{Binding Groups }"
+                SelectedValue="{Binding SelectedValueGroup}"
+                SelectedItem="Wszyscy"
+                Margin="5" 
+                Width="150" 
+                />
+            <Button Command="{Binding RefreshEmployeeCommand}" Content="Odśwież" Margin="5" Width="90"/>
+            <Button Command="{Binding UserSettingsCommand}" Content="Ustawienia" Margin="5" Width="90"/>
+        </StackPanel>
+        <DataGrid
+            Grid.Row="1"
+            ItemsSource="{Binding Employees}"
+            SelectedItem="{Binding SelectedEmployee}"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            SelectionMode="Single"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Imię"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Nazwiko"/>
+                <DataGridTextColumn Binding="{Binding DateToEmployee}" Header="Data Zatrudnienia"/>
+                <DataGridTextColumn Binding="{Binding DateToDown}" Header="Data Zwolnienia"/>
+                <DataGridTextColumn Binding="{Binding EmployeeNumer}" Header="Numer Telefonu"/>
+                <DataGridTextColumn Binding="{Binding Paycheck}" Header="Wypłata"/>
+                <DataGridTextColumn Binding="{Binding Comments}" Header="Uwagi"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</mah:MetroWindow>

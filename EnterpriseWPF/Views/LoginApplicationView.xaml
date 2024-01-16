@@ -1,0 +1,40 @@
+﻿<mah:MetroWindow x:Class="EnterpriseWPF.Views.LoginApplicationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:components="clr-namespace:EnterpriseWPF.Components"
+        
+                 mc:Ignorable="d"
+           WindowStartupLocation="CenterScreen"
+            Name="LoginApplicationWindow"
+            Title="Logowanie"  Height="200" Width="380" IsCloseButtonEnabled="False" MaxHeight="200" MinHeight="200" MinWidth="380" MaxWidth="380">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="27.774"/>
+            <ColumnDefinition Width="232.226"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="\Pictures\e.png" />
+        <Image Source="\Pictures\w.png" Width="35" Grid.Row="1" Margin="2,0,2,0"/>
+        <Image Source="\Pictures\p.png" Grid.Row="2"/>
+
+        <Label Content="Login:" Margin="15,15,15,15" Grid.Column="1"/>
+        <TextBox Text="{Binding Login}" Grid.Column="2" Margin="15,15,15,15" Grid.ColumnSpan="2"/>
+
+        <Label Content="Hasło:" Margin="15,15,15,15" Grid.Row="1" Grid.Column="1"/>
+        <components:BindablePasswordBox Grid.Column="2" Grid.Row="1" Margin="15,15,15,15" Password="{Binding Password, Mode=TwoWay}" Grid.ColumnSpan="2" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+            <Button Command="{Binding ConfirmCommand}" CommandParameter="{Binding ElementName=LoginApplicationWindow}" Content="Zaloguj" Margin="15" Width="100" Height="25"/>
+            <Button Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=LoginApplicationWindow}" Content="Anuluj" Margin="15" Width="100" Height="25"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>
