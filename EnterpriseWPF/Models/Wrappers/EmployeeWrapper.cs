@@ -12,18 +12,20 @@ namespace EnterpriseWPF.Models.Wrappers
     {
         public EmployeeWrapper() 
         {
-            EmployeeNumer = null;
-            Paycheck = null;
+            //EmployeeNumer = null;
+            //Paycheck = null;
+            DateToEmployee = DateTime.Now;
+            //DateToDown = null;
         }
         
 
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string DateToEmployee { get; set; }
-        public string DateToDown {  get; set; }
-        public int? EmployeeNumer {  get; set; }
-        public double? Paycheck { get; set; }
+        public DateTime DateToEmployee { get; set; }
+        public DateTime? DateToDown {  get; set; }
+        public int EmployeeNumer {  get; set; }
+        public decimal Paycheck { get; set; }
         public string Comments { get; set; }
 
 
@@ -31,7 +33,7 @@ namespace EnterpriseWPF.Models.Wrappers
 
         private bool _isFirstNameValid;
         private bool _isLastNameValid;
-        private bool _isDateToEmployeeValid;
+        //private bool _isDateToEmployeeValid;
 
         public string this[string columnName]
         {
@@ -63,18 +65,18 @@ namespace EnterpriseWPF.Models.Wrappers
                             _isLastNameValid = true;
                         }
                         break;
-                    case (nameof(DateToEmployee)):
-                        if (string.IsNullOrWhiteSpace(DateToEmployee))
-                        { 
-                            Error = "Pole Data Zatrudenia jest wymagane";
-                            _isDateToEmployeeValid = false;
-                        }
-                        else
-                        {
-                            Error = string.Empty;
-                            _isDateToEmployeeValid = true;
-                        }
-                        break;
+                    //case (nameof(DateToEmployee)):
+                    //    if (DateToEmployee == null)
+                    //    { 
+                    //        Error = "Pole Data Zatrudenia jest wymagane";
+                    //        _isDateToEmployeeValid = false;
+                    //    }
+                    //    else
+                    //    {
+                    //        Error = string.Empty;
+                    //        _isDateToEmployeeValid = true;
+                    //    }
+                    //    break;
                     default:
                         break;
                 }
@@ -89,7 +91,7 @@ namespace EnterpriseWPF.Models.Wrappers
         {
             get
             {
-                return _isFirstNameValid & _isLastNameValid & _isDateToEmployeeValid;
+                return _isFirstNameValid & _isLastNameValid; //& _isDateToEmployeeValid;
             }
 
         }

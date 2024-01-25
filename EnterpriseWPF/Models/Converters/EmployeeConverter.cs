@@ -17,10 +17,10 @@ namespace EnterpriseWPF.Models.Converters
                 Id = model.Id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                DateToEmployee = model.DateToEmployee,
-                DateToDown = model.DateToDown,
+                DateToEmployee = DateTime.Parse(model.DateToEmployee),
+                DateToDown = TryParse(model.DateToDown),
                 EmployeeNumer = model.EmployeeNumer,
-                Paycheck = model.Paycheck,
+                Paycheck = (decimal)model.Paycheck,
                 Comments = model.Comments,
 
             };
@@ -34,12 +34,38 @@ namespace EnterpriseWPF.Models.Converters
                 Id = model.Id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                DateToEmployee = model.DateToEmployee,
-                DateToDown = model.DateToDown,
-                EmployeeNumer = (int)model.EmployeeNumer,
+                DateToEmployee = model.DateToEmployee.ToString(),
+                DateToDown = TryParseS(model.DateToDown),
+                EmployeeNumer = model.EmployeeNumer,
                 Paycheck = (double)model.Paycheck,
                 Comments = model.Comments,
             };
+        }
+
+        public static DateTime? TryParse(string text)
+        {
+            DateTime date;
+            if (DateTime.TryParse(text, out date))
+            {
+                return date;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static string TryParseS(DateTime? date)
+        {
+            string text;
+            if (date != null)
+            {
+                return text = date.ToString();
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

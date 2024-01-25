@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="Id:" Margin="5"/>
-        <TextBox IsEnabled="{Binding TextBoxEnabled}" Text="{Binding Employee.Id}"  Grid.Column="1" Margin="5" />
+        <TextBox IsEnabled="False" Text="{Binding Employee.Id}"  Grid.Column="1" Margin="5" />
 
         <Label Content="Imię:" Grid.Row="1" Margin="5" />
         <TextBox IsEnabled="{Binding TextBoxEnabled}" Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="1" Margin="5"/>
@@ -36,7 +36,7 @@
         <TextBox IsEnabled="{Binding TextBoxEnabled}" Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="2" Margin="5"/>
 
         <Label Content="Data Zatrudnienia:" Grid.Row="3" Margin="5"/>
-        <DatePicker IsEnabled="{Binding TextBoxEnabled}" SelectedDate="{Binding Employee.DateToEmployee, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Grid.Column="1" Grid.Row="3" Margin="5" />
+        <DatePicker IsEnabled="{Binding TextBoxEnabled}" SelectedDate="{Binding Employee.DateToEmployee, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="3" Margin="5" />
 
         <Label Content="Data Zwolniena:" Grid.Row="4" Margin="5"/>
         <DatePicker IsEnabled="{Binding ReverseTextBoxEnabled}" SelectedDate="{Binding Employee.DateToDown, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Margin="5"/>
